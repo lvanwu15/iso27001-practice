@@ -1,6 +1,6 @@
-# 本機 ISO/IEC 27001:2022 主導稽核員題目練習與線上模擬考系統 (V15.65)
+# 個人學習筆記 (Personal Study Notes)
 
-本系統完整收錄 **PECB Certified ISO/IEC 27001 Lead Auditor exam (ISO-IEC-27001-Lead-Auditor-CN, V15.65 中文版，共 359 頁、418 題)** 全數題目、原始圖表截圖與詳細解析。
+本專案為個人自主學習與實務案例練習筆記系統。
 
 ## 🚀 啟動方式（兩種皆可，完全離線本機執行）
 
