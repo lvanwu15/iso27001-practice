@@ -40,34 +40,34 @@
       </div>
     </div>
 
-    <nav class="nav-links">
+    <div class="nav-links">
       <button class="nav-btn active" data-view="dashboard" onclick="app.switchView('dashboard')">
-        📊 學習總覽
+        📊 <span>學習總覽</span>
       </button>
       <button class="nav-btn" data-view="practice" onclick="app.switchView('practice')">
-        ✍️ 題庫練習
+        ✍️ <span>題庫練習</span>
       </button>
       <button class="nav-btn" data-view="exam" onclick="app.switchView('exam')">
-        ⏱️ 線上模擬考
+        ⏱️ <span>線上模擬考</span>
       </button>
       <button class="nav-btn" data-view="explorer" onclick="app.switchView('explorer')">
-        🔍 題庫檢索／錯題本
+        🔍 <span>題庫檢索</span>
       </button>
-    </nav>
+    </div>
 
     <div class="nav-actions">
       <button class="icon-btn" onclick="app.exportProgress()" title="匯出學習紀錄與錯題本備份">
-        💾 匯出備份
+        💾 <span class="action-label">匯出備份</span>
       </button>
       <button class="icon-btn" onclick="document.getElementById('importFileInput').click()" title="匯入學習紀錄備份">
-        📂 匯入
+        📂 <span class="action-label">匯入</span>
       </button>
       <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="app.importProgress(event)" />
       <button class="icon-btn" id="themeToggleBtn" onclick="app.toggleTheme()">
-        ☀️ 淺色模式
+        ☀️ <span class="action-label">淺色模式</span>
       </button>
       <button class="icon-btn" onclick="app.lockSite()" title="立即鎖定網站">
-        🔒 鎖定
+        🔒 <span class="action-label">鎖定</span>
       </button>
     </div>
   </header>
@@ -257,21 +257,21 @@
 
     <!-- ==================== 2. PRACTICE WORKSPACE VIEW ==================== -->
     <section id="view-practice" class="view-section">
-      <div class="filter-bar" style="justify-content: space-between;">
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div class="filter-bar practice-toolbar">
+        <div class="practice-toolbar-left">
           <span class="badge badge-blue" id="practiceModeTitle" style="font-size:14px; padding:6px 12px;">順序完整練習</span>
-          <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer;">
+          <label class="toolbar-toggle">
             <input type="checkbox" id="studyModeToggle" onchange="app.toggleStudyMode(this.checked)" />
             <span>💡 背題／直接看解析模式</span>
           </label>
-          <label style="display:flex; align-items:center; gap:6px; font-size:14px; cursor:pointer;">
+          <label class="toolbar-toggle">
             <input type="checkbox" id="autoNextToggle" onchange="app.toggleAutoNext(this.checked)" />
             <span>⚡ 答對自動下一題</span>
           </label>
         </div>
 
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:13px; color:var(--text-muted);">跳至題號：</span>
+        <div class="practice-toolbar-right">
+          <span style="font-size:13px; color:var(--text-muted); white-space:nowrap;">跳至題號：</span>
           <input type="number" id="jumpQInput" class="input-control" style="width:90px; padding:6px 10px;" min="1" max="418" placeholder="1~418" onkeydown="if(event.key==='Enter') app.jumpToQuestionId()" />
           <button class="btn btn-outline" style="padding:6px 12px;" onclick="app.jumpToQuestionId()">前往</button>
         </div>
@@ -297,13 +297,13 @@
           <div class="options-list" id="practiceOptionsList"></div>
 
           <div class="question-nav-footer">
-            <div style="display:flex; gap:10px;">
-              <button class="btn btn-outline" onclick="app.prevPracticeQuestion()">⬅️ 上一題 (←)</button>
-              <button class="btn btn-outline" onclick="app.nextPracticeQuestion()">下一題 (→) ➡️</button>
+            <div class="nav-footer-group">
+              <button class="btn btn-outline" onclick="app.prevPracticeQuestion()">⬅️ 上一題 <span class="desktop-only">(←)</span></button>
+              <button class="btn btn-outline" onclick="app.nextPracticeQuestion()">下一題 <span class="desktop-only">(→)</span> ➡️</button>
             </div>
-            <div style="display:flex; gap:10px;">
+            <div class="nav-footer-group">
               <button class="btn btn-outline" id="practiceShowAnsBtn" onclick="app.revealPracticeAnswer()">👁️ 顯示答案與解析</button>
-              <button class="btn btn-primary" id="practiceSubmitBtn" onclick="app.submitPracticeAnswer()">✅ 確認作答 (Enter)</button>
+              <button class="btn btn-primary" id="practiceSubmitBtn" onclick="app.submitPracticeAnswer()">✅ 確認作答 <span class="desktop-only">(Enter)</span></button>
             </div>
           </div>
 
@@ -486,11 +486,11 @@
             <div class="options-list" id="examOptionsList"></div>
 
             <div class="question-nav-footer">
-              <div style="display:flex; gap:10px;">
-                <button class="btn btn-outline" onclick="app.prevExamQuestion()">⬅️ 上一題 (←)</button>
-                <button class="btn btn-primary" onclick="app.nextExamQuestion()">下一題 (→) ➡️</button>
+              <div class="nav-footer-group">
+                <button class="btn btn-outline" onclick="app.prevExamQuestion()">⬅️ 上一題 <span class="desktop-only">(←)</span></button>
+                <button class="btn btn-primary" onclick="app.nextExamQuestion()">下一題 <span class="desktop-only">(→)</span> ➡️</button>
               </div>
-              <div style="display:flex; gap:10px;">
+              <div class="nav-footer-group">
                 <button class="btn btn-outline" onclick="app.abortExam()">✖️ 放棄考試</button>
                 <button class="btn btn-success" onclick="app.confirmSubmitExam()">📤 正式交卷評分</button>
               </div>
@@ -527,7 +527,7 @@
       <div id="exam-report" style="display:none;">
         <div id="examReportHero" class="report-hero"></div>
 
-        <div class=" workspace-layout" style="grid-template-columns: 1fr 1fr; margin-bottom:24px;">
+        <div class="workspace-layout report-grid" style="margin-bottom:24px;">
           <div class="question-panel">
             <div class="section-title" style="margin-bottom:14px;">📊 六大知識領域得分率分析</div>
             <div id="examDomainBreakdown"></div>

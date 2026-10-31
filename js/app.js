@@ -59,10 +59,10 @@
   function applyTheme() {
     if (state.theme === "light") {
       document.documentElement.setAttribute("data-theme", "light");
-      document.getElementById("themeToggleBtn").innerHTML = "🌙 深色模式";
+      document.getElementById("themeToggleBtn").innerHTML = '🌙 <span class="action-label">深色模式</span>';
     } else {
       document.documentElement.removeAttribute("data-theme");
-      document.getElementById("themeToggleBtn").innerHTML = "☀️ 淺色模式";
+      document.getElementById("themeToggleBtn").innerHTML = '☀️ <span class="action-label">淺色模式</span>';
     }
   }
 
@@ -288,7 +288,7 @@
     // Bookmark & Wrong buttons
     const isBookmarked = state.bookmarkIds.includes(q.id);
     const bmBtn = document.getElementById("practiceBookmarkBtn");
-    bmBtn.innerHTML = isBookmarked ? "⭐ 已收藏 (F)" : "☆ 收藏題目 (F)";
+    bmBtn.innerHTML = isBookmarked ? '⭐ 已收藏 <span class="desktop-only">(F)</span>' : '☆ 收藏 <span class="desktop-only">(F)</span>';
     bmBtn.style.borderColor = isBookmarked ? "var(--warning)" : "";
     bmBtn.style.color = isBookmarked ? "var(--warning)" : "";
 
@@ -762,7 +762,7 @@
 
     const isFlagged = activeExam.flags.has(q.id);
     const flagBtn = document.getElementById("examFlagBtn");
-    flagBtn.innerHTML = isFlagged ? "🚩 已標記待查 (F)" : "🏳️ 標記待查 (F)";
+    flagBtn.innerHTML = isFlagged ? '🚩 已標記待查 <span class="desktop-only">(F)</span>' : '🏳️ 標記待查 <span class="desktop-only">(F)</span>';
     flagBtn.style.borderColor = isFlagged ? "var(--warning)" : "";
     flagBtn.style.color = isFlagged ? "var(--warning)" : "";
 
@@ -1286,7 +1286,7 @@
             </div>
             <div style="font-size:14px; color:var(--text-primary);">${escapeHtml(preview)}</div>
           </div>
-          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:85px;">
+          <div class="explorer-item-meta">
             <span class="badge badge-blue">答案: ${q.answer.join(" ")}</span>
             <span style="font-size:12px; color:var(--text-muted);">PDF p.${q.pages[0]}</span>
           </div>
